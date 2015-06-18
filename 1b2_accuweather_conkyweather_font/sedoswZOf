@@ -1,0 +1,5 @@
+        <h3><a href="#">Today</a></h3>
+        <div class="icon i-17-s "></div>
+        <span class="cond">Clouds and sun with a t-storm</span>
+        <strong class="temp">77<span>&deg;</span></strong><span class="low"><span>Lo</span> 49<span>&deg;</span></span>
+        <h3><a href="#">Wed</a></h3>

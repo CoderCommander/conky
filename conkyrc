@@ -1,0 +1,195 @@
+# time to close conky second. 0 = always active 
+total_run_times 0
+
+# display text on the standard output
+out_to_console no
+
+# memory setting to avoid flicker
+double_buffer yes
+# Subtract the buffer memory use
+no_buffers yes
+text_buffer_size 1024
+
+# refresh rate of the window (in seconds)
+update_interval 1
+
+# number of sampes used to calc the average use
+cpu_avg_samples 1
+net_avg_samples 2
+
+# size and position
+alignment top_right
+minimum_size 240 240
+maximum_width 240
+
+# gap with the edge x = y = left or right up or down
+gap_x 3
+#gap_x -120
+gap_y -15
+
+# display shadows
+ draw_shades no
+# display contours
+draw_outline no
+# contours around blocks of text
+draw_borders no
+# width of outline
+border_width 0
+# width of margins
+border_margin 0
+
+# conky that runs in the background
+background yes
+
+# use it's own window
+own_window yes
+own_window_hints undecorated, sticky 
+# window type: normal (with frame)/override/desktop
+#own_window_type override # normal / override / desktop
+own_window_type desktop
+own_window_argb_visual yes
+#pseudo transparency if you have icons
+own_window_transparent yes
+
+# user Xft (aliased fonts etc)
+use_xft yes
+xftalpha .90
+override_utf8_locale yes # force UTF8
+
+# use_xft must be a "yes"
+#xftfont saxMono:size=9 #OCR A Std:size=6
+#xftfont monospace:size=8 #OCR A Std:size=6
+xftfont droid sans:size=7.8 #OCR A Std:size=6
+# all upper case
+uppercase no
+
+# add space after some objects to prevent them from moving
+# works only with fixed fonts
+use_spacer no
+
+# size dotted
+stippled_borders 5
+
+# Colors
+default_color FFFFFF #white
+default_shade_color 333333
+default_outline_color black
+
+color2 cf1c00 #red
+#color1 66FF00 #green
+color1 5de6fb #blue
+#color1 176e88 #blue
+color3 FFD700 #gold
+
+TEXT
+#${font Liberation Mono:Bold:size=10}
+#${color C0FF3E}${execpi 30 cal -m | head -2 | sed 's/Sa So/${color red}Sa So${color}/' |sed 's/^/${goto 45} /'}
+#${execpi 60 DJS=`date +%_d`; cal -m | sed '1,2d' | sed '/./!d' | sed 's/$/                     /' | fold -w 21 | sed -n '/^.\{21\}/p' | sed 's/^/${goto 45} /' | sed /" $DJS "/s/" $DJS "/" "'${color orange}'"$DJS"'${color}'" "/}
+
+
+${font Visitor TT1 BRK : pixelsize=7}${color1}Time${font}
+${color3}${voffset -5}${hr}
+#${offset 15}${color1}Time : ${color3}${time %H : %M : %S}
+${offset 15}${color1}Date : ${time %A %d %B %Y}
+${offset 15}Week : ${color2}${time %V} ${color1}out of 53
+${offset 15}${color1}Uptime  : ${color3}${uptime}
+
+${font Visitor TT1 BRK : pixelsize=7}${color1}System${alignr}${font}
+${color3}${voffset -5}${hr}
+${offset 15}${color1}HDrive : ${color3}${exec hddtemp -n /dev/sda5}°C${alignr}${color1}Open ports : ${color3}${tcp_portmon 1 65535 count}
+${offset 15}${color1}Core 1 : ${color2}${platform coretemp.0 temp 1}°C${alignr}${color1}Up : ${upspeedf p4p1} kb/s
+${offset 15}${color1}Core 3 : ${color2}${platform coretemp.0 temp 3}°C${alignr}${color1}Down : ${downspeedf p4p1} kb/s
+${offset 15}${color1}Core 2 : ${color2}${platform coretemp.0 temp 2}°C${alignr}${color1}Up Total : ${totalup p4p1}
+${offset 15}${color1}Core 4 : ${color2}${platform coretemp.0 temp 4}°C${alignr}${color1}Down Total : ${totaldown p4p1}
+${offset 15}${color1}Processes : ${processes} ${alignr}Running : ${color2}$running_processes
+
+${offset 15}${color1}Top CPU${font}${alignr}PID${font}
+${offset 15}${color3}${voffset -2}${hr}
+${offset 15}${color2}${top name 1}${color3}${goto 100}${top cpu 1}%${alignr}${color1}${top pid 1}
+${offset 15}${color2}${top name 2}${color3}${goto 100}${top cpu 2}%${alignr}${color1}${top pid 2}
+${offset 15}${color2}${top name 3}${color3}${goto 100}${top cpu 3}%${alignr}${color1}${top pid 3}
+${offset 15}${color2}${top name 4}${color3}${goto 100}${top cpu 4}%${alignr}${color1}${top pid 4}
+${offset 15}${color2}${top name 5}${color3}${goto 100}${top cpu 5}%${alignr}${color1}${top pid 5}
+
+${offset 15}${color1}Top RAM${font}${alignr}PID${font}
+${offset 15}${color3}${voffset -2}${hr}
+${offset 15}${color2}${top_mem name 1}${color3}${goto 100}${top_mem mem 1}%${alignr}${color1}${top_mem pid 1}
+${offset 15}${color2}${top_mem name 2}${color3}${goto 100}${top_mem mem 2}%${alignr}${color1}${top_mem pid 2}
+${offset 15}${color2}${top_mem name 3}${color3}${goto 100}${top_mem mem 3}%${alignr}${color1}${top_mem pid 3}
+${offset 15}${color2}${top_mem name 4}${color3}${goto 100}${top_mem mem 4}%${alignr}${color1}${top_mem pid 4}
+${offset 15}${color2}${top_mem name 5}${color3}${goto 100}${top_mem mem 5}%${alignr}${color1}${top_mem pid 5}
+
+${font Visitor TT1 BRK : pixelsize=7}${color1}CPU Activity${color3}${alignr}${cpu cpu}%${font}
+${color3}${voffset -5}${hr}
+${offset 15}${color1}Core 1 : ${freq_g 1} GHz - ${color3}${cpu cpu1}% ${color1}${cpubar cpu1}
+#${offset 15}${cpugraph cpu1 25,285 176e88 66FF00}
+${offset 15}Core 2 : ${freq_g 2} GHz - ${color3}${cpu cpu2}% ${color1}${cpubar cpu2}
+#${offset 15}${cpugraph cpu2 25,285 176e88 66FF00}
+${offset 15}Core 3 : ${freq_g 3} GHz - ${color3}${cpu cpu3}% ${color1}${cpubar cpu3}
+#${offset 15}${cpugraph cpu3 25,285 176e88 66FF00}
+${offset 15}Core 4 : ${freq_g 4} GHz - ${color3}${cpu cpu4}% ${color1}${cpubar cpu4}
+#${offset 15}${cpugraph cpu4 25,285 176e88 66FF00}
+
+${font Visitor TT1 BRK : pixelsize=7}${color1}Memory Activity${font}
+${color3}${voffset -5}${hr}
+${offset 15}${color1}RAM : $mem / $memmax -  ${color3}$memperc% ${color1}${membar}
+${offset 15}SW : $swap / $swapmax  -  ${color3}$swapperc% ${color1}${swapbar}
+
+${font Visitor TT1 BRK : pixelsize=7}${color1}Disk Status${font}
+${color3}${voffset -5}${hr}
+${offset 15}${color1}/ :${goto 85}${color1}${font}${fs_used_perc /} % ${alignr}${fs_used /} / ${fs_size /}${alignr} 
+${alignr}${color1}${diskiograph /dev/sda2 6,120 176e88 aecf4c 0 -t}
+${offset 15}${color1}/home :${goto 85}${color1}${font}${fs_used_perc /home} % ${alignr}${fs_used /home} / ${fs_size /home}${alignr} 
+${alignr}${color1}${diskiograph /dev/sda5 6,120 176e88 aecf4c 0 -t}
+${offset 15}${color1}/nas :${goto 85}${color1}${font}${fs_used_perc /mnt/nas} % ${alignr}${fs_used /mnt/nas} / ${fs_size /mnt/nas}${alignr} 
+#${offset 15}${color1}/backup :${goto 85}${color1}${font}${fs_used_perc /mnt/backup} % ${alignr}${fs_used /mnt/backup} / ${fs_size /mnt/backup}${alignr} 
+
+${font Visitor TT1 BRK : pixelsize=7}${color1}WEATHER ${font}
+${color3}${voffset -5}${hr}
+$color${texeci 500 bash $HOME/.conky/1b2_accuweather_conkyweather_font/1b2}
+${font}${execpi 600 sed -n '1p' $HOME/.conky/1b2_accuweather_conkyweather_font/messages}${font}${goto 75}${color ffe595}TEMP: $color${alignr}${execpi 600 sed -n '29p' $HOME/.conky/1b2_accuweather_conkyweather_font/curr_cond}°F (${execpi 600 sed -n '30p' $HOME/.conky/1b2_accuweather_conkyweather_font/curr_cond}°F)
+${goto 15}${font conkyweather:size=30}${execi 600  sed -n '27p' $HOME/.conky/1b2_accuweather_conkyweather_font/curr_cond}${font}
+${goto 75}${color ffe595}${voffset -38}WIND: $color${alignr}${execpi 600 sed -n '31p' $HOME/.conky/1b2_accuweather_conkyweather_font/curr_cond} ${execpi 600 sed -n '32p' $HOME/.conky/1b2_accuweather_conkyweather_font/curr_cond}
+${goto 75}${color ffe595}HUM: $color${alignr}${execpi 600 sed -n '33p' $HOME/.conky/1b2_accuweather_conkyweather_font/curr_cond}
+${goto 75}${color ffe595}DEW POINT: $color${alignr}${execpi 600 sed -n '37p' $HOME/.conky/1b2_accuweather_conkyweather_font/curr_cond}°F
+${goto 75}${color ffe595}PR: $color${alignr}${execpi 600 sed -n '34p' $HOME/.conky/1b2_accuweather_conkyweather_font/curr_cond}
+${goto 75}${color ffe595}VISIB: $color${alignr}${execpi 600 sed -n '38p' $HOME/.conky/1b2_accuweather_conkyweather_font/curr_cond}
+${goto 75}${color ffe595}CLOUD COVER: $color${alignr}${execpi 600 sed -n '35p' $HOME/.conky/1b2_accuweather_conkyweather_font/curr_cond}
+${goto 75}${color ffe595}UV INDEX: $color${alignr}${execpi 600 sed -n '36p' $HOME/.conky/1b2_accuweather_conkyweather_font/curr_cond}
+${goto 75}${color ffe595}S/M RISE: $color${alignr}${execpi 600 sed -n '39p' $HOME/.conky/1b2_accuweather_conkyweather_font/curr_cond}/${execpi 600 sed -n '41p' $HOME/1b2_accuweather_conkyweather_font/curr_cond}
+#
+${goto 75}${color ffe595}S/M SET: $color${alignr}${execpi 600 sed -n '40p' $HOME/.conky/1b2_accuweather_conkyweather_font/curr_cond}/${execpi 600 sed -n '42p' $HOME/1b2_accuweather_conkyweather_font/curr_cond}
+#
+${hr 1}
+#
+${goto 60}${color ffe595}TODAY$color$font${goto 150}${color ffe595}TONIGHT$color$font
+#
+${goto 55}${voffset 5}${font conkyweather:size=30}${execi 600  sed -n '25p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}${font}${goto 150}${voffset -25}${font conkyweather:size=30}${execi 600  sed -n '30p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}${font}
+#
+${goto 65}${execpi 600 sed -n '26p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}°F${goto 160}${execpi 600 sed -n '31p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}°F
+#
+${goto 62}(${execpi 600 sed -n '27p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}°F)${goto 158}(${execpi 600 sed -n '32p' $HOME/1b2_accuweather_conkyweather_font/first_days}°F)
+
+${goto 30}${execpi 600 sed -n '2p' $HOME/.conky/1b2_accuweather_conkyweather_font/messages}${goto 130}${execpi 600 sed -n '3p' $HOME/.conky/1b2_accuweather_conkyweather_font/messages}$font
+#
+${goto 30}Chance of Precip: ${execpi 600 sed -n '28p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}${goto 131}Chance of Precip: $color${execpi 600 sed -n '33p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}
+#
+${hr 1}
+#
+${goto 15}${color ffe595}${execpi 600 sed -n '5p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}${goto 100}${execpi 600 sed -n '10p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}${goto 200}${alignc}${execpi 600 sed -n '15p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}$color${font}
+#
+${goto 12}${voffset 5}${font conkyweather:size=30}${execi 600  sed -n '6p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}${font}${goto 105}${voffset -30}${font conkyweather:size=30}${execi 600  sed -n '11p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}${font}${goto 200}${voffset -30}${font conkyweather:size=30}${execi 600  sed -n '16p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}${font}
+#
+${alignc}${voffset 5}${goto 22}${execpi 600 sed -n '8p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}°F${goto 115}${execpi 600 sed -n '13p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}°F${goto 210}${execpi 600 sed -n '18p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}°F
+#
+${goto 22}${execpi 600 sed -n '9p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}°F${goto 115}${execpi 600 sed -n '14p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}°F${goto 210}${execpi 600 sed -n '19p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}°F
+#
+
+${goto 15}${color ffe595}${execpi 600 sed -n '20p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}${goto 100}${execpi 600 sed -n '1p' $HOME/.conky/1b2_accuweather_conkyweather_font/last_days}${goto 200}${execpi 600 sed -n '6p' $HOME/.conky/1b2_accuweather_conkyweather_font/last_days}$color${font}
+#
+${goto 12}${voffset 5}${font conkyweather:size=30}${execi 600  sed -n '21p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}${font}${goto 105}${voffset -30}${font conkyweather:size=30}${execi 600  sed -n '2p' $HOME/.conky/1b2_accuweather_conkyweather_font/last_days}${font}${goto 200}${voffset -30}${font conkyweather:size=30}${execi 600  sed -n '7p' $HOME/.conky/1b2_accuweather_conkyweather_font/last_days}${font}
+#
+${alignc}${voffset 5}${goto 22}${execpi 600 sed -n '23p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}°F${goto 115}${execpi 600 sed -n '4p' $HOME/.conky/1b2_accuweather_conkyweather_font/last_days}°F${goto 210}${execpi 600 sed -n '9p' $HOME/.conky/1b2_accuweather_conkyweather_font/last_days}°F
+#
+${goto 22}${execpi 600 sed -n '24p' $HOME/.conky/1b2_accuweather_conkyweather_font/first_days}°F${goto 115}${execpi 600 sed -n '5p' $HOME/.conky/1b2_accuweather_conkyweather_font/last_days}°F${goto 210}${alignc}${execpi 600 sed -n '10p' $HOME/.conky/1b2_accuweather_conkyweather_font/last_days}°F
+

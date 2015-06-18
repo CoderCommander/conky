@@ -1,0 +1,24 @@
+        <div class="icon i-15-s "></div>
+        <span class="cond">A shower or thunderstorm</span>
+        <span class="low" style="color:#ffffff;">Lo </span><strong class="temp">56<span>&deg;</span></strong>
+        <h3><a href="#">Today</a></h3>
+        <div class="icon i-17-s "></div>
+        <span class="cond">Partly sunny with a t-storm</span>
+        <strong class="temp">77<span>&deg;</span></strong><span class="low"><span>Lo</span> 49<span>&deg;</span></span>
+        <h3><a href="#">Wed</a></h3>
+        <div class="icon i-3-s "></div>
+        <span class="cond">Partly sunny and cooler</span>
+        <strong class="temp">65<span>&deg;</span></strong><span class="low"><span>Lo</span> 46<span>&deg;</span></span>
+        <h3><a href="#">Thu</a></h3>
+        <div class="icon i-12-s "></div>
+        <span class="cond">Mostly cloudy, a little rain</span>
+        <strong class="temp">68<span>&deg;</span></strong><span class="low"><span>Lo</span> 39<span>&deg;</span></span>
+        <h3><a href="#">Fri</a></h3>
+        <div class="icon i-3-s "></div>
+        <span class="cond">Colder with some sun</span>
+        <strong class="temp">52<span>&deg;</span></strong><span class="low"><span>Lo</span> 39<span>&deg;</span></span>
+                        <div class="icon i-17-l"></div> 
+                        <div class="info"> <span class="cond"></span> <span class="hi">Hi </span><span class="temp">77<span>&deg;</span></span> 
+                            <span class="realfeel">RealFeel&#174; 82&#176;</span>
+                            <span class="realfeel">Precipitation 59%</span>
+                          <p>Times of clouds and sun with a shower or thunderstorm around</p> 
